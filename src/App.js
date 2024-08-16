@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Counter from './components/Counter';
+import ClassCounter from './components/ClassCounter';
 
 function App() {
+  const [value, setValue] = useState('ТЕКСТ В ИМПУТЕ');
+
+
+
   return (
     <div className="App">
-      Приложение работает?
+
+      <ClassCounter />
     </div>
   );
 }

@@ -5,13 +5,20 @@ import './styles/App.css';
 import PostItem from './components/PostItem';
 
 function App() {
-  const [value, setValue] = useState('ТЕКСТ В ИМПУТЕ');
-
-
+  const [posts, setPosts] = useState([
+    { id: 1, title: 'Javascript', body: 'Desciption' },
+    { id: 2, title: 'Javascript 2', body: 'Desciption 2' },
+    { id: 3, title: 'Javascript 3', body: 'Desciption 3' },
+  ])
 
   return (
     <div className="App">
-      <PostItem post={{ id: 1, title: 'Javascript', body: 'Desciption' }} />
+      <h1 style={{ textAlign: 'center' }}>
+        Список постов
+      </h1>
+      {posts.map((post) =>
+        <PostItem post={post} key={post.id} />
+      )}
     </div>
   );
 }

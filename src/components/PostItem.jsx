@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const PostItem = () => {
+const PostItem = (props) => {
     return (
         <div className="post">
             <div className="post__content">
-                <string>1. Javascript</string>
+                <string>{props.post.id}. {props.post.title}</string>
                 <div>
-                    Javascript - язык программирования
+                    {props.post.body}
                 </div>
             </div>
             <div className="post__btns">

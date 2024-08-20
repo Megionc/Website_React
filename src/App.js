@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Counter from './components/Counter';
 import ClassCounter from './components/ClassCounter';
 import './styles/App.css';
@@ -13,23 +13,30 @@ function App() {
     { id: 2, title: 'Javascript 2', body: 'Desciption 2' },
     { id: 3, title: 'Javascript 3', body: 'Desciption 3' },
   ])
-  const [title, setTitle] = useState("fdsa")
+  const [title, setTitle] = useState('')
+
+  const bodyInputRef = useRef();
 
   const addNevPost = (e) => {
     e.preventDefault()
     console.log(title)
+    console.log(bodyInputRef.current.value)
   }
 
   return (
     <div className="App">
       <form>
         <MyInput
-          valie={title}
-          onChange={e => setTitle(e.target.valie)}
+          value={title}
+          onChange={e => setTitle(e.target.value)}
           type="text"
           placeholder="Название поста"
         />
-        <MyInput type="text" placeholder="Описание поста" />
+        <MyInput
+          ref={bodyInputRef}
+          type="text"
+          placeholder="Описание поста"
+        />
         <MyButton onClick={addNevPost}>Создать пост</MyButton>
       </form>
       <PostList posts={posts} title="Посты про JS" />

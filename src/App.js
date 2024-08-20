@@ -14,13 +14,18 @@ function App() {
     { id: 3, title: 'Javascript 3', body: 'Desciption 3' },
   ])
   const [title, setTitle] = useState('')
-
-  const bodyInputRef = useRef();
+  const [body, setBody] = useState('')
 
   const addNevPost = (e) => {
     e.preventDefault()
-    console.log(title)
-    console.log(bodyInputRef.current.value)
+    const newPost = {
+      it: Date.now(),
+      title,
+      body
+    }
+    setPosts([...posts, newPost])
+    setTitle('')
+    setBody('')
   }
 
   return (
@@ -33,7 +38,8 @@ function App() {
           placeholder="Название поста"
         />
         <MyInput
-          ref={bodyInputRef}
+          value={body}
+          onChange={e => setBody(e.target.value)}
           type="text"
           placeholder="Описание поста"
         />
